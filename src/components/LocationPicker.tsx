@@ -42,6 +42,7 @@ export default function LocationPicker({ value, onChange }: LocationPickerProps)
       await import("leaflet/dist/leaflet.css");
 
       // Fix default marker icon
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       delete (L.Icon.Default.prototype as any)._getIconUrl;
       L.Icon.Default.mergeOptions({
         iconRetinaUrl: "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/images/marker-icon-2x.png",
@@ -78,9 +79,11 @@ export default function LocationPicker({ value, onChange }: LocationPickerProps)
         mapRef.current = null;
       }
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // Update marker position
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const updateMarker = useCallback(async (lat: number, lng: number, L?: any, map?: Map) => {
     const leaflet = L || await import("leaflet");
     const currentMap = map || mapRef.current;

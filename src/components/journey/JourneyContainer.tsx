@@ -226,6 +226,9 @@ function JourneyContent() {
   const { state, helpers } = useJourney();
   const { data: projects, isLoading: projectsLoading } = useProjects();
   
+  // Hooks must be called unconditionally
+  const onQuoteRequest = useQuoteRequest();
+  
   // Track animation direction based on step changes
   const prevStepRef = useRef(state.currentStep);
   const [direction, setDirection] = useState(0);
@@ -276,7 +279,7 @@ function JourneyContent() {
             )}
             {state.currentStep === 2 && <Visualizer />}
             {state.currentStep === 3 && <ConstructionTimeline />}
-            {state.currentStep === 4 && <JourneySummary onQuoteRequest={useQuoteRequest()} />}
+            {state.currentStep === 4 && <JourneySummary onQuoteRequest={onQuoteRequest} />}
           </motion.div>
         </AnimatePresence>
       </div>

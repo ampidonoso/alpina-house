@@ -186,7 +186,7 @@ const QuoteWizard = forwardRef<HTMLDivElement, QuoteWizardProps>(({
 
   // Map logical step to actual step type
   const getStepType = (currentStep: number) => {
-    let stepIndex = currentStep - 1;
+    const stepIndex = currentStep - 1;
     const types = ["location", "model"];
     if (hasFinishes) types.push("finish");
     if (hasTerrains) types.push("terrain");
@@ -271,7 +271,9 @@ const QuoteWizard = forwardRef<HTMLDivElement, QuoteWizardProps>(({
         const priceRaw = selectedProject?.price_range;
         const prices = priceRaw ? (typeof priceRaw === 'string' ? JSON.parse(priceRaw) : priceRaw) : {};
         basePrice = parseFloat(String(prices.usd || '0').replace(/[^0-9.-]/g, '') || '0');
-      } catch {}
+      } catch {
+        // Ignore parsing errors, use default basePrice
+      }
       
       const finishModifier = selectedFinish?.price_modifier || 0;
       const terrainModifier = selectedTerrain?.price_modifier || 0;

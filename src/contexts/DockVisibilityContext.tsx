@@ -1,6 +1,6 @@
 import { createContext, useContext, useState, useEffect, useRef, ReactNode } from "react";
 
-interface DockVisibilityContextType {
+interface DockVisibilityContextType extends Record<string, unknown> {
   isDockVisible: boolean;
 }
 

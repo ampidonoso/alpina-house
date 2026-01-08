@@ -13,8 +13,9 @@ type FormFieldContextValue<
   TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
 > = {
   name: TName;
-};
+} & Record<string, unknown>;
 
+// eslint-disable-next-line @typescript-eslint/no-empty-object-type
 const FormFieldContext = React.createContext<FormFieldContextValue>({} as FormFieldContextValue);
 
 const FormField = <

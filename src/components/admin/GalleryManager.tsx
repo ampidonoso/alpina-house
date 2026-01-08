@@ -125,7 +125,7 @@ const GalleryManager = ({ projectId, images, finishes, terrains }: GalleryManage
     }));
 
     setPendingMedia(prev => [...prev, ...newPending]);
-  }, []);
+  }, [isValidFile]);
 
   const handleFileSelect = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     const files = Array.from(e.target.files || []).filter(isValidFile);
@@ -144,7 +144,7 @@ const GalleryManager = ({ projectId, images, finishes, terrains }: GalleryManage
 
     setPendingMedia(prev => [...prev, ...newPending]);
     e.target.value = '';
-  }, []);
+  }, [isValidFile]);
 
   const uploadSingleMedia = useCallback(async (pending: PendingMedia) => {
     setPendingMedia(prev => prev.map(item => 
@@ -172,7 +172,7 @@ const GalleryManager = ({ projectId, images, finishes, terrains }: GalleryManage
           return prev.filter(i => i.id !== pending.id);
         });
       }, 1000);
-    } catch (error: any) {
+    } catch (error: unknown) {
       const errorMessage = error?.message?.includes('row-level security') 
         ? 'Error de permisos: configura las políticas RLS del bucket'
         : 'Error al subir archivo';
