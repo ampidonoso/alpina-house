@@ -1,0 +1,692 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Helvetica+Neue:wght@300;400;500;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Base Blanca / Nieve */
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+
+    /* Tarjetas limpias */
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+ 
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+ 
+    --primary: 240 5.9% 10%;
+    --primary-foreground: 0 0% 98%;
+ 
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+ 
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+ 
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+ 
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 240 10% 3.9%;
+ 
+    --radius: 0px; /* Bordes rectos para ser más arquitectónico */
+
+    /* Custom design tokens - Inspired by native Chilean trees */
+    
+    /* Raulí (Nothofagus alpina) - Alpina inspiration */
+    /* Deep forest greens, grey-brown bark tones */
+    --rauli-forest: 140 25% 15%;      /* Deep forest green */
+    --rauli-bark: 30 15% 35%;         /* Grey-brown bark */
+    --rauli-leaf: 140 30% 25%;        /* Dark green leaves */
+    --rauli-wood: 30 20% 40%;         /* Rich wood tone */
+    
+    /* Canelo (Drimys winteri) - Winteri inspiration */
+    /* Bright greens, aromatic bark, white flowers */
+    --canelo-leaf: 120 35% 30%;       /* Bright forest green */
+    --canelo-bark: 25 30% 50%;        /* Warm aromatic bark */
+    --canelo-flower: 0 0% 95%;        /* White flowers */
+    --canelo-light: 120 25% 85%;      /* Light green tint */
+    
+    /* Sage tones (keeping for compatibility) */
+    --sage-50: 90 10% 20%;
+    --sage-100: 90 12% 25%;
+    --sage-200: 90 14% 35%;
+    --sage-300: 90 15% 45%;
+    --sage-400: 90 15% 50%;
+    --sage-500: 90 18% 55%;
+    
+    /* Olive tones (keeping for compatibility) */
+    --olive-50: 90 8% 18%;
+    --olive-100: 90 10% 22%;
+    --olive-200: 90 12% 30%;
+    --olive-300: 90 14% 40%;
+    --olive-400: 90 15% 45%;
+    
+    --stone-50: 0 0% 85%;
+    --stone-100: 0 0% 75%;
+    --stone-200: 0 0% 60%;
+    --stone-300: 0 0% 45%;
+    --stone-400: 0 0% 35%;
+    --stone-500: 0 0% 28%;
+    --stone-600: 0 0% 22%;
+    --stone-700: 0 0% 18%;
+    --stone-800: 0 0% 14%;
+    --stone-900: 0 0% 10%;
+    --stone-950: 0 0% 7%;
+    
+    --burnt-clay: 25 45% 50%;
+    --burnt-clay-light: 25 50% 58%;
+    
+    --sidebar-background: 0 0% 12%;
+    --sidebar-foreground: 40 10% 92%;
+    --sidebar-primary: 90 15% 45%;
+    --sidebar-primary-foreground: 0 0% 10%;
+    --sidebar-accent: 0 0% 15%;
+    --sidebar-accent-foreground: 40 8% 80%;
+    --sidebar-border: 0 0% 20%;
+    --sidebar-ring: 90 15% 45%;
+  }
+
+  .dark {
+    /* Light mode override if needed */
+    --background: 40 10% 92%;
+    --foreground: 0 0% 10%;
+    --card: 40 12% 95%;
+    --card-foreground: 0 0% 10%;
+    --popover: 40 12% 95%;
+    --popover-foreground: 0 0% 10%;
+    --primary: 90 18% 40%;
+    --primary-foreground: 40 10% 95%;
+    --secondary: 40 8% 88%;
+    --secondary-foreground: 0 0% 15%;
+    --muted: 40 6% 82%;
+    --muted-foreground: 0 0% 40%;
+    --accent: 90 18% 40%;
+    --accent-foreground: 40 10% 95%;
+    --cta: 25 40% 48%;
+    --cta-foreground: 40 10% 98%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 40 8% 80%;
+    --input: 40 8% 80%;
+    --ring: 90 18% 40%;
+    --sidebar-background: 40 12% 94%;
+    --sidebar-foreground: 0 0% 10%;
+    --sidebar-primary: 90 18% 40%;
+    --sidebar-primary-foreground: 40 10% 95%;
+    --sidebar-accent: 40 8% 88%;
+    --sidebar-accent-foreground: 0 0% 15%;
+    --sidebar-border: 40 8% 80%;
+    --sidebar-ring: 90 18% 40%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    /* Lenis handles smooth scrolling */
+    scroll-behavior: auto;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Inter', 'Helvetica Neue', system-ui, sans-serif;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    line-height: 1.2;
+  }
+
+  ::selection {
+    background: hsl(var(--sage-400) / 0.3);
+    color: hsl(var(--foreground));
+  }
+
+  /* Improved focus states for accessibility */
+  a:focus-visible,
+  button:focus-visible {
+    outline: 2px solid hsl(var(--primary));
+    outline-offset: 3px;
+  }
+
+  /* Smoother base transitions */
+  a, button {
+    transition: all 0.2s ease-out;
+  }
+
+  /* Enhanced button hover effects */
+  button {
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Smooth image transitions */
+  img {
+    transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  /* Powerful scroll behavior */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Enhanced focus states for better UX */
+  *:focus-visible {
+    outline: 2px solid hsl(var(--primary));
+    outline-offset: 4px;
+    border-radius: 2px;
+  }
+
+  /* Smooth scroll reveal */
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal-on-scroll {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+    
+    .reveal-on-scroll.revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+@layer components {
+  .font-serif {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+  }
+
+  .font-sans {
+    font-family: 'Inter', 'Manrope', system-ui, sans-serif;
+  }
+
+  .font-display {
+    font-family: 'Inter', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-weight: 500;
+  }
+
+  /* Section labels - Swiss minimalist style */
+  .section-label {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    letter-spacing: 0.2em;
+    font-size: 11px;
+    text-transform: uppercase;
+    color: hsl(var(--muted-foreground));
+  }
+
+  /* Wide section labels - luxury style */
+  .section-label-wide {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    letter-spacing: 0.25em;
+    font-size: 10px;
+    text-transform: uppercase;
+    color: hsl(var(--muted-foreground));
+  }
+
+  /* Image vignette mask utility */
+  .image-vignette {
+    position: relative;
+  }
+  
+  .image-vignette::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at center, transparent 40%, hsl(var(--background)) 100%);
+    pointer-events: none;
+  }
+
+  /* Technical tags - Minimalist */
+  .tag-technical {
+    @apply inline-flex items-center px-3 py-1.5 text-xs font-medium tracking-wide;
+    background: hsl(var(--muted));
+    color: hsl(var(--foreground));
+    border: 1px solid hsl(var(--border));
+  }
+
+  /* Minimalist tags */
+  .tag-sage {
+    @apply inline-flex items-center px-3 py-1.5 text-xs font-medium tracking-wide;
+    background: hsl(var(--muted));
+    color: hsl(var(--foreground));
+    border: 1px solid hsl(var(--border));
+  }
+
+  /* Primary CTA - Minimalist Black */
+  .btn-cta {
+    @apply inline-flex items-center justify-center px-8 py-4 font-sans text-sm font-medium tracking-[0.15em] uppercase;
+    background: hsl(var(--cta));
+    color: hsl(var(--cta-foreground));
+    border-radius: 0;
+    transition: all 0.2s ease-out;
+  }
+
+  .btn-cta:hover {
+    background: hsl(var(--cta) / 0.9);
+    transform: translateY(-2px);
+  }
+
+  .btn-cta:active {
+    transform: translateY(0);
+  }
+
+  /* Primary button - Sage */
+  .btn-primary {
+    @apply inline-flex items-center justify-center px-8 py-4 font-sans text-sm font-medium tracking-[0.1em] uppercase;
+    background: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+    transition: transform 0.2s ease-out, background 0.15s ease-out;
+  }
+
+  .btn-primary:hover {
+    background: hsl(var(--sage-500));
+    transform: translateY(-2px);
+  }
+
+  .btn-primary:active {
+    transform: translateY(0);
+  }
+
+  /* Secondary button */
+  .btn-secondary {
+    @apply inline-flex items-center justify-center px-6 py-3 font-sans text-sm font-medium tracking-wide border;
+    background: transparent;
+    border-color: hsl(var(--border));
+    color: hsl(var(--foreground));
+    transition: all 0.2s ease-out;
+  }
+
+  .btn-secondary:hover {
+    background: hsl(var(--secondary));
+    border-color: hsl(var(--primary) / 0.5);
+    transform: translateY(-1px);
+  }
+
+  .btn-secondary:active {
+    transform: translateY(0);
+  }
+
+  /* Card hover with lift effect */
+  .card-hover {
+    transition: transform 0.25s ease-out, box-shadow 0.25s ease-out;
+  }
+
+  .card-hover:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 24px 48px -12px hsl(var(--foreground) / 0.1);
+  }
+
+  .card-hover:active {
+    transform: translateY(-4px);
+  }
+
+  /* Efecto Nieve / Frosted Glass - Enhanced Glassmorphism */
+  .alpina-glass {
+    @apply bg-white/80 backdrop-blur-md border border-white/20 shadow-sm;
+  }
+
+  .glass-dark {
+    background: hsl(var(--foreground) / 0.75);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid hsl(var(--background) / 0.1);
+  }
+
+  /* Glassmorphism Variants - Inspired by Jupe.com */
+  .glass-light {
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
+  }
+
+  .glass-card {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.08);
+  }
+
+  .glass-overlay {
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+
+  /* Premium Overlay Utilities */
+  .overlay-vignette {
+    background: radial-gradient(ellipse at center, transparent 0%, transparent 50%, rgba(0, 0, 0, 0.3) 100%);
+  }
+
+  .overlay-gradient-top {
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.4), transparent);
+  }
+
+  .overlay-gradient-bottom {
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.5), transparent);
+  }
+
+  .overlay-gradient-sides {
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.3), transparent, rgba(0, 0, 0, 0.3));
+  }
+
+  .overlay-film-grain {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    opacity: 0.015;
+  }
+
+  /* Elegant link underline animation */
+  .link-underline {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .link-underline::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    bottom: -4px;
+    left: 0;
+    background: currentColor;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  
+  .link-underline:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+
+  /* Olive accent background */
+  .bg-olive-subtle {
+    background: hsl(var(--olive-50));
+  }
+
+  /* Sage accent background */
+  .bg-sage-subtle {
+    background: hsl(var(--sage-50));
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* Smooth scroll reveal animations */
+  .reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Premium image treatment */
+  .image-reveal {
+    overflow: hidden;
+  }
+
+  .image-reveal img {
+    transition: transform 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  .image-reveal:hover img {
+    transform: scale(1.05);
+  }
+
+  /* Hide scrollbar but keep functionality */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Custom cursor - hide default on desktop */
+  @media (min-width: 1024px) {
+    * {
+      cursor: none !important;
+    }
+  }
+
+  /* HubSpot Form Styles */
+  .hubspot-form-container {
+    @apply bg-card border border-border rounded-xl;
+    padding: 2rem !important;
+  }
+
+  @media (min-width: 640px) {
+    .hubspot-form-container {
+      padding: 2.5rem !important;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .hubspot-form-container {
+      padding: 3rem !important;
+    }
+  }
+
+  .hubspot-form-container .hs-form-field {
+    margin-bottom: 1.75rem !important;
+  }
+
+  .hubspot-form-container .hs_submit {
+    margin-top: 2rem !important;
+  }
+
+  .hubspot-form-container label {
+    @apply block text-sm font-medium mb-2;
+    color: hsl(var(--foreground)) !important;
+  }
+
+  .hubspot-form-container label span {
+    color: hsl(var(--foreground)) !important;
+  }
+
+  .hubspot-form-container .hs-form-required {
+    color: hsl(var(--destructive)) !important;
+  }
+
+  .hubspot-form-container input[type="text"],
+  .hubspot-form-container input[type="email"],
+  .hubspot-form-container input[type="tel"],
+  .hubspot-form-container input[type="number"],
+  .hubspot-form-container textarea,
+  .hubspot-form-container select,
+  .hubspot-form-container .hs-input {
+    width: 100% !important;
+    background-color: hsl(220 10% 30%) !important;
+    border: 2px solid hsl(220 10% 45%) !important;
+    color: hsl(0 0% 95%) !important;
+    padding: 0.875rem 1rem !important;
+    font-size: 0.9rem !important;
+    border-radius: 0.5rem !important;
+    transition: all 0.2s !important;
+  }
+
+  .hubspot-form-container input:focus,
+  .hubspot-form-container textarea:focus,
+  .hubspot-form-container select:focus,
+  .hubspot-form-container .hs-input:focus {
+    outline: none !important;
+    border-color: hsl(var(--primary)) !important;
+    box-shadow: 0 0 0 3px hsl(var(--primary) / 0.3) !important;
+    background-color: hsl(220 10% 35%) !important;
+  }
+
+  .hubspot-form-container input::placeholder,
+  .hubspot-form-container textarea::placeholder {
+    color: hsl(220 10% 65%) !important;
+    opacity: 1 !important;
+  }
+
+  .hubspot-form-container select {
+    appearance: none !important;
+    cursor: pointer !important;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%23aaa' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M6 8l4 4 4-4'/%3e%3c/svg%3e") !important;
+    background-position: right 0.75rem center !important;
+    background-repeat: no-repeat !important;
+    background-size: 1.5em 1.5em !important;
+  }
+
+  .hubspot-form-container select option {
+    background-color: hsl(220 10% 25%) !important;
+    color: hsl(0 0% 95%) !important;
+    padding: 0.75rem !important;
+  }
+
+  .hubspot-form-container .hs-button {
+    width: 100% !important;
+    background: linear-gradient(135deg, hsl(var(--cta)) 0%, hsl(var(--cta) / 0.85) 100%) !important;
+    color: hsl(var(--cta-foreground)) !important;
+    font-weight: 700 !important;
+    padding: 1.125rem 2rem !important;
+    border-radius: 0.75rem !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.1em !important;
+    font-size: 0.9rem !important;
+    border: none !important;
+    cursor: pointer !important;
+    box-shadow: 0 4px 20px hsl(var(--cta) / 0.3), 0 2px 8px hsl(0 0% 0% / 0.2) !important;
+    position: relative !important;
+    overflow: hidden !important;
+  }
+
+  .hubspot-form-container .hs-button::before {
+    content: "" !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: -100% !important;
+    width: 100% !important;
+    height: 100% !important;
+    background: linear-gradient(90deg, transparent, hsl(0 0% 100% / 0.2), transparent) !important;
+    transition: left 0.5s ease !important;
+  }
+
+  .hubspot-form-container .hs-button:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 8px 30px hsl(var(--cta) / 0.4), 0 4px 12px hsl(0 0% 0% / 0.3) !important;
+  }
+
+  .hubspot-form-container .hs-button:hover::before {
+    left: 100% !important;
+  }
+
+  .hubspot-form-container .hs-button:active {
+    transform: translateY(0) !important;
+    box-shadow: 0 2px 10px hsl(var(--cta) / 0.3) !important;
+  }
+
+  .hubspot-form-container .hs-error-msgs {
+    color: hsl(var(--destructive)) !important;
+    font-size: 0.75rem !important;
+    margin-top: 0.25rem !important;
+    font-weight: 500 !important;
+  }
+
+  .hubspot-form-container .submitted-message {
+    text-align: center !important;
+    color: hsl(var(--foreground)) !important;
+    padding: 2rem 0 !important;
+    font-size: 1.125rem !important;
+  }
+
+  .hubspot-form-container .hs-richtext,
+  .hubspot-form-container .hs-richtext p,
+  .hubspot-form-container .hs-richtext span {
+    color: hsl(0 0% 85%) !important;
+    font-size: 0.95rem !important;
+    margin-bottom: 1.5rem !important;
+    line-height: 1.6 !important;
+  }
+
+  /* Phone input specific styles */
+  .hubspot-form-container .hs-fieldtype-phonenumber .hs-input,
+  .hubspot-form-container .hs-fieldtype-phonenumber input {
+    background-color: hsl(220 10% 30%) !important;
+    border: 2px solid hsl(220 10% 45%) !important;
+    border-radius: 0.375rem !important;
+  }
+
+  /* Leaflet Map Styles */
+  .leaflet-container {
+    background-color: hsl(var(--secondary));
+    font-family: inherit;
+  }
+
+  .leaflet-control-zoom {
+    border: none !important;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3) !important;
+  }
+
+  .leaflet-control-zoom a {
+    background-color: hsl(var(--card)) !important;
+    color: hsl(var(--foreground)) !important;
+    border: 1px solid hsl(var(--border)) !important;
+  }
+
+  .leaflet-control-zoom a:hover {
+    background-color: hsl(var(--secondary)) !important;
+  }
+
+  .leaflet-control-attribution {
+    background-color: hsl(var(--card) / 0.8) !important;
+    color: hsl(var(--muted-foreground)) !important;
+    font-size: 10px;
+  }
+
+  .leaflet-control-attribution a {
+    color: hsl(var(--primary)) !important;
+  }
+}
+
+/* Shimmer animation for skeletons */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.shimmer {
+  background: linear-gradient(
+    90deg,
+    hsl(var(--muted) / 0.3) 25%,
+    hsl(var(--muted) / 0.6) 50%,
+    hsl(var(--muted) / 0.3) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s ease-in-out infinite;
+}
