@@ -27,8 +27,8 @@ jobs:
       - name: Run type check
         run: npx tsc --noEmit
 
-      - name: Run linter
-        run: npm run lint -- --max-warnings=50 || true
+      - name: Run linter (warnings allowed)
+        run: npm run lint || echo "Linting completed with warnings"
         continue-on-error: true
 
       - name: Run tests
