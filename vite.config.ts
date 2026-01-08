@@ -48,6 +48,8 @@ export default defineConfig(({ mode }) => ({
       },
     },
   },
+  // Base path para GitHub Pages (si es necesario)
+  base: process.env.NODE_ENV === 'production' && process.env.BASE_PATH ? process.env.BASE_PATH : '/',
   test: {
     globals: true,
     environment: "jsdom",
